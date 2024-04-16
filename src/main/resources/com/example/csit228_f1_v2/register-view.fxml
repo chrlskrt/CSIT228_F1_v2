@@ -15,6 +15,7 @@
             <ColumnConstraints halignment="CENTER" />
             <ColumnConstraints />
             <ColumnConstraints halignment="CENTER" />
+            <ColumnConstraints halignment="CENTER" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints valignment="CENTER" />
@@ -30,8 +31,8 @@
             <TextField fx:id="tfUsername" minWidth="125.0" prefHeight="28.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <Label fx:id="lbPassword" text="Password:" GridPane.rowIndex="2" />
             <PasswordField fx:id="pfPassword" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <Button fx:id="btnLogIn" mnemonicParsing="false" text="Log In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-            <Button fx:id="btnSignUp" mnemonicParsing="false" text="Sign Up" GridPane.rowIndex="6" />
+            <Button fx:id="btnLogIn" mnemonicParsing="false" onAction="#onLogInClick" text="Log In" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Button fx:id="btnSignUp" mnemonicParsing="false" text="Sign Up" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME TO CIT" textAlignment="CENTER" GridPane.columnSpan="3" />
          </children>
       </GridPane>

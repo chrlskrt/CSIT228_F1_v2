@@ -1,5 +1,6 @@
 package com.example.csit228_f1_v2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,11 @@ public class RegisterController {
     public Button btnLogIn;
 
     public static void main(String[] args) {
+
+    }
+
+    public void onLogInClick(ActionEvent event) {
+        Parent log_view = FXMLLoader.load(HelloApplication.class.getResource("login-view.fxml"));
 
     }
 }
