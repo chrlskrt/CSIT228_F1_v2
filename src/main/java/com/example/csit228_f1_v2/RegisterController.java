@@ -27,7 +27,11 @@ public class RegisterController {
     }
 
     public void onLogInClick(ActionEvent event) {
-        Parent log_view = FXMLLoader.load(HelloApplication.class.getResource("login-view.fxml"));
+        try {
+            Parent log_view = FXMLLoader.load(HelloApplication.class.getResource("login-view.fxml"));
+        } catch (IOException e) {
+
+        }
 
     }
 }
