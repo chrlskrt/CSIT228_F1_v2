@@ -33,7 +33,7 @@ public class HelloApplication extends Application {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         Text txtWelcome = new Text("Welcome to CIT");
-        txtWelcome.setFont(Font.font("Chiller", FontWeight.EXTRA_BOLD, 69));
+        txtWelcome.setFont(Font.font("Monospaced", FontWeight.EXTRA_BOLD, 69));
         txtWelcome.setFill(Color.RED);
 //        grid.setAlignment();
         grid.setPadding(new Insets(20));
@@ -99,16 +99,36 @@ public class HelloApplication extends Application {
         grid.add(btnShow, 2,2);
 
         Button btnLogin = new Button("Log In");
-        btnLogin.setFont(Font.font(40));
-        grid.add(btnLogin, 0, 3, 2, 1);
+        btnLogin.setFont(Font.font(30));
+        grid.add(btnLogin, 0, 3);
+
+        Button btnSignUp = new Button("Sign Up");
+        btnSignUp.setFont(Font.font(30));
+        grid.add(btnSignUp, 1, 3);
 
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Hello");
                 try {
-                    Parent p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+                    Parent p = FXMLLoader.load(getClass().getResource("home-view.fxml"));
                     Scene s = new Scene(p);
+                    stage.setScene(s);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnSignUp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("Hello");
+                try {
+                    Parent p = FXMLLoader.load(getClass().getResource("register-view.fxml"));
+                    Scene s = new Scene(p);
+                    stage.setTitle("Register");
                     stage.setScene(s);
                     stage.show();
                 } catch (IOException e) {
@@ -121,6 +141,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         scene.setFill(Color.CORNFLOWERBLUE);
         stage.show();
+        stage.setTitle("CIT Site");
         txtWelcome.minWidth(grid.getWidth());
     }
 
