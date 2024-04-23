@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="pnHome" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Log Out" />
-</VBox>
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.NotesHomeController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="40.0" prefWidth="700.0">
+              <items>
+                <Button fx:id="btnLogOut" mnemonicParsing="false" onAction="#onLogOutButtonClick" text="Log Out" />
+                  <Separator opacity="0.0" prefHeight="30.0" prefWidth="547.0" />
+                  <Label fx:id="lblUserName" alignment="CENTER_RIGHT" text="iji" textAlignment="CENTER" />
+              </items>
+            </ToolBar>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="379.0" prefWidth="700.0" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

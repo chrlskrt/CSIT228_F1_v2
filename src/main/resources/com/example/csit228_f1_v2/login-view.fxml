@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pnMain" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.LoginController">
+<AnchorPane fx:id="pnMain" prefHeight="327.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.LogInRegisterController">
    <children>
-      <GridPane fx:id="pnLogin" alignment="CENTER" hgap="22.0" vgap="10.0">
+      <GridPane fx:id="pnLogin" alignment="CENTER" hgap="22.0" prefHeight="220.0" prefWidth="287.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
@@ -26,13 +26,38 @@
             <RowConstraints />
          </rowConstraints>
          <children>
-            <Label text="Username:" GridPane.rowIndex="1" />
-            <TextField fx:id="tfUsername" minWidth="125.0" prefHeight="28.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Label fx:id="lbPassword" text="Password:" GridPane.rowIndex="2" />
-            <PasswordField fx:id="pfPassword" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Log In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-            <Button fx:id="btnSignUp" mnemonicParsing="false" text="Sign Up" GridPane.rowIndex="6" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME TO CIT" textAlignment="CENTER" GridPane.columnSpan="3" />
+            <Label text="Username:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label fx:id="lbPassword" text="Password:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Button fx:id="btnLLogIn" mnemonicParsing="false" onAction="#onLLoginButtonClick" text="Log In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+               <font>
+                  <Font size="19.0" />
+               </font></Button>
+            <Button fx:id="btnLSignUp" mnemonicParsing="false" onAction="#onLSignUpButtonClick" text="Sign Up" GridPane.rowIndex="6">
+               <font>
+                  <Font size="19.0" />
+               </font></Button>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME" textAlignment="CENTER" wrappingWidth="244.06835174560547" GridPane.columnSpan="3">
+               <font>
+                  <Font size="19.0" />
+               </font></Text>
+            <TextField fx:id="tfLUsername" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="19.0" />
+               </font></TextField>
+            <Label fx:id="lblLogInError" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="331.0" text="Username or password is incorrect." textAlignment="CENTER" textFill="#c13c3c" visible="false" GridPane.columnSpan="3" GridPane.rowIndex="3">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <PasswordField fx:id="pfLPassword" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="19.0" />
+               </font></PasswordField>
          </children>
       </GridPane>
    </children>
