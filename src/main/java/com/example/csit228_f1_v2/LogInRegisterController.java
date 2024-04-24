@@ -31,11 +31,16 @@ public class LogInRegisterController {
 
     public void onLLoginButtonClick(ActionEvent actionEvent) throws SQLException, IOException {
         String username = tfLUsername.getText();
-        String pass = pfLPassword.getText().hashCode() + "";
+        String pass = pfLPassword.getText();
+
+        if (username.isEmpty() || pass.isEmpty()){
+            showAlert(Alert.AlertType.WARNING, "Username or password is empty.");
+            return;
+        }
 
         ManageDatabase dbManager = ManageDatabase.getInstance();
 
-        Status res = dbManager.login(username, pass);
+        Status res = dbManager.login(username, pass.hashCode() + "");
 
         if (res == Status.LOGIN_SUCCESS){
             goToHomePage(actionEvent);
@@ -58,7 +63,11 @@ public class LogInRegisterController {
         String pass = pfRPassword.getText();
         String cPass = pfRConfirm.getText();
 
-        Alert alert = new Alert(Alert.AlertType.NONE);
+        if (user.isEmpty() || pass.isEmpty() || cPass.isEmpty()){
+            showAlert(Alert.AlertType.WARNING, "Username or password is empty.");
+            return;
+        }
+
         if (cPass.equals(pass)){
             ManageDatabase dbManager = ManageDatabase.getInstance();
             Status createUserRes = dbManager.createUser(user, pass);
@@ -83,8 +92,8 @@ public class LogInRegisterController {
     }
 
     void goToHomePage(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+        Parent root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 700, 500);
         stage.setScene(scene);
