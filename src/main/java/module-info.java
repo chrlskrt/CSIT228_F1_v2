@@ -8,4 +8,6 @@ module com.example.csit228_f1_v2 {
     exports com.example.csit228_f1_v2;
     exports com.example.csit228_f1_v2.SqlSide;
     opens com.example.csit228_f1_v2.SqlSide to javafx.fxml;
+    exports com.example.csit228_f1_v2.Utils;
+    opens com.example.csit228_f1_v2.Utils to javafx.fxml;
 }

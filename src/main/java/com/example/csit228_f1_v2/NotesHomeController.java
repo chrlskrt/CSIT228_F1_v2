@@ -1,16 +1,12 @@
 package com.example.csit228_f1_v2;
 
+import com.example.csit228_f1_v2.Utils.CurrentUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class NotesHomeController implements Initializable {

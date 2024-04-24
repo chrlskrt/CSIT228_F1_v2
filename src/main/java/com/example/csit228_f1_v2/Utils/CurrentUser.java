@@ -1,4 +1,4 @@
-package com.example.csit228_f1_v2;
+package com.example.csit228_f1_v2.Utils;
 
 public class CurrentUser {
     private static CurrentUser instance;

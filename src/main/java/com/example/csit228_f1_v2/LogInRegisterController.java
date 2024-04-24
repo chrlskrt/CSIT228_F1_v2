@@ -1,7 +1,8 @@
 package com.example.csit228_f1_v2;
 
-import com.example.csit228_f1_v2.SqlSide.CrudUser;
+import com.example.csit228_f1_v2.SqlSide.ManageDatabase;
 import com.example.csit228_f1_v2.SqlSide.MySQLConnection;
+import com.example.csit228_f1_v2.Utils.CurrentUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,9 +26,6 @@ public class LogInRegisterController {
     public Button btnRSignUp;
     public Label lblRegisterError;
     public PasswordField pfRConfirm;
-
-    public void onLogOutButtonClick(ActionEvent actionEvent) {
-    }
 
     public void onLLoginButtonClick(ActionEvent actionEvent) {
         String username = tfLUsername.getText();
@@ -73,7 +71,7 @@ public class LogInRegisterController {
         Scene scene = new Scene(root, 700, 500);
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("CIT228 Site");
+        stage.setTitle("Log-in Page");
     }
     public void onRSignUpButtonClick(ActionEvent actionEvent) {
         String user = tfRUsername.getText();
@@ -82,8 +80,8 @@ public class LogInRegisterController {
 
         Alert alert = new Alert(Alert.AlertType.NONE);
         if (cPass.equals(pass)){
-            CrudUser user_crud = CrudUser.getInstance();
-            int createUserRes = user_crud.createUser(user, pass);
+            ManageDatabase dbManager = ManageDatabase.getInstance();
+            int createUserRes = dbManager.createUser(user, pass);
 
             if (createUserRes == 1){
                 alert.setAlertType(Alert.AlertType.INFORMATION);

@@ -23,14 +23,4 @@ public class MySQLConnection {
 
         return c;
     }
-
-//    public static void main(String[] args) {
-//        Connection c = getConnection();
-//
-//        try {
-//            c.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }
