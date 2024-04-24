@@ -41,6 +41,8 @@ public class NotesHomeController {
     }
 
     public void onBtnProfileClick(ActionEvent actionEvent) {
+        home_vbox.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
     }
 
     public void onBtnNewNoteClick(ActionEvent actionEvent) {
