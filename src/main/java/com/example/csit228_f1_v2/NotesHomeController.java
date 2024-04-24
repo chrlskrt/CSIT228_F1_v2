@@ -38,59 +38,71 @@ public class NotesHomeController {
 
         notes = dbManager.readNotes();
 
+        if (notes == null){
+            return;
+        }
+
         home_vbox.getChildren().clear();
 
         for(Note note : notes){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("note_pad.fxml"));
             AnchorPane note_component = loader.load();
 
-            TextField title = (TextField) note_component.lookup("#noteTitle");
-            TextArea content = (TextArea) note_component.lookup("#noteContent");
-            Button delete_btn = (Button) note_component.lookup("#btnDeleteNote");
-            Button edit_btn = (Button) note_component.lookup("#btnEditNote");
-            Button cancelEdit_btn = (Button) note_component.lookup("#btnCancelEdit");
-            Button updateEdit_btn = (Button) note_component.lookup("#btnUpdateNote");
+            try {
+                TextField title = (TextField) note_component.lookup("#noteTitle");
+                TextArea content = (TextArea) note_component.lookup("#noteContent");
+                Button delete_btn = (Button) note_component.lookup("#btnDeleteNote");
+                Button edit_btn = (Button) note_component.lookup("#btnEditNote");
+                Button cancelEdit_btn = (Button) note_component.lookup("#btnCancelEdit");
+                Button updateEdit_btn = (Button) note_component.lookup("#btnUpdateNote");
 
-            title.setText(note.note_title);
-            content.setText(note.note_content);
+                System.out.println("NN " + note.note_id + " " + note.note_title + " " + note.note_content);
 
-            delete_btn.setOnAction(e-> {
-                try {
-                    deleteNote(note.note_id);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
-
-            edit_btn.setOnAction(e-> {
-                title.setEditable(true);
-                content.setEditable(true);
-                cancelEdit_btn.setVisible(true);
-                updateEdit_btn.setVisible(true);
-            });
-
-            cancelEdit_btn.setOnAction(e -> {
                 title.setText(note.note_title);
-                title.setEditable(false);
-
                 content.setText(note.note_content);
-                content.setEditable(false);
 
-                updateEdit_btn.setVisible(false);
-                cancelEdit_btn.setVisible(false);
-            });
+                delete_btn.setOnAction(e-> {
+                    try {
+                        deleteNote(note.note_id);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
 
-            updateEdit_btn.setOnAction(e -> {
-                Status res = updateNote(note.note_id, title.getText(), content.getText());
+                edit_btn.setOnAction(e-> {
+                    title.setEditable(true);
+                    content.setEditable(true);
+                    cancelEdit_btn.setVisible(true);
+                    updateEdit_btn.setVisible(true);
+                });
 
-                if (res == Status.NOTE_UPDATE_SUCCESS){
+                cancelEdit_btn.setOnAction(e -> {
+                    title.setText(note.note_title);
                     title.setEditable(false);
+
+                    content.setText(note.note_content);
                     content.setEditable(false);
 
-                    cancelEdit_btn.setVisible(false);
                     updateEdit_btn.setVisible(false);
-                }
-            });
+                    cancelEdit_btn.setVisible(false);
+                });
+
+                updateEdit_btn.setOnAction(e -> {
+                    Status res = updateNote(note.note_id, title.getText(), content.getText());
+
+                    if (res == Status.NOTE_UPDATE_SUCCESS){
+                        title.setEditable(false);
+                        content.setEditable(false);
+
+                        cancelEdit_btn.setVisible(false);
+                        updateEdit_btn.setVisible(false);
+                    }
+                });
+            } catch (Exception e){
+
+            }
+
+            home_vbox.getChildren().add(note_component);
         }
     }
 
