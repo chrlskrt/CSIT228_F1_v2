@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pnMain" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.LogInRegisterController">
+<AnchorPane fx:id="pnMain" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.LogInRegisterController">
    <children>
       <GridPane fx:id="pnRegister" alignment="CENTER" hgap="22.0" prefHeight="344.0" prefWidth="585.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -31,7 +31,7 @@
                <font>
                   <Font size="19.0" />
                </font></Label>
-            <TextField fx:id="tfRUsername" minWidth="104.0" prefHeight="28.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <TextField fx:id="tfRUsername" minWidth="104.0" prefHeight="42.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <font>
                   <Font size="19.0" />
                </font></TextField>
@@ -39,7 +39,7 @@
                <font>
                   <Font size="19.0" />
                </font></Label>
-            <PasswordField fx:id="pfRPassword" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+            <PasswordField fx:id="pfRPassword" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <font>
                   <Font size="19.0" />
                </font></PasswordField>
@@ -63,7 +63,7 @@
                <font>
                   <Font size="19.0" />
                </font></Label>
-            <PasswordField fx:id="pfRConfirm" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <PasswordField fx:id="pfRConfirm" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <font>
                   <Font size="19.0" />
                </font></PasswordField>

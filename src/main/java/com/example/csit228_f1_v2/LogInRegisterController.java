@@ -2,6 +2,7 @@ package com.example.csit228_f1_v2;
 
 import com.example.csit228_f1_v2.SqlSide.ManageDatabase;
 import com.example.csit228_f1_v2.SqlSide.MySQLConnection;
+import com.example.csit228_f1_v2.SqlSide.Status;
 import com.example.csit228_f1_v2.Utils.CurrentUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -26,54 +27,33 @@ public class LogInRegisterController {
     public Button btnRSignUp;
     public Label lblRegisterError;
     public PasswordField pfRConfirm;
+    public Alert alert = new Alert(Alert.AlertType.NONE);
 
-    public void onLLoginButtonClick(ActionEvent actionEvent) {
+    public void onLLoginButtonClick(ActionEvent actionEvent) throws SQLException, IOException {
         String username = tfLUsername.getText();
         String pass = pfLPassword.getText().hashCode() + "";
 
-        try (Connection c = MySQLConnection.getConnection();
-             PreparedStatement stmt = c.prepareStatement(
-                     "SELECT * FROM users WHERE username=? AND password=?"
-             )) {
-            stmt.setString(1, username);
-            stmt.setString(2, pass);
-            ResultSet res = stmt.executeQuery();
+        ManageDatabase dbManager = ManageDatabase.getInstance();
 
-            if (res.next()){
-                CurrentUser currentUser = CurrentUser.getInstance();
-                currentUser.setUser_id(res.getInt("user_id"));
-                currentUser.setUsername(res.getString("username"));
-                currentUser.setPassword(res.getString("password"));
+        Status res = dbManager.login(username, pass);
 
-                goToHomePage(actionEvent);
-                lblLogInError.setVisible(false);
-            } else {
-                lblLogInError.setVisible(true);
-            }
-        } catch (SQLException | IOException e) {
-
+        if (res == Status.LOGIN_SUCCESS){
+            goToHomePage(actionEvent);
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Usernane or password is incorrect.");
         }
 
         tfLUsername.setText("");
         pfLPassword.setText("");
     }
     public void onLSignUpButtonClick(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("register-view.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 700, 500);
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Registration Page");
+        goToRegister(actionEvent);
     }
+
     public void onRLogInButtonClick(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 700, 500);
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Log-in Page");
+        goToLogIn(actionEvent);
     }
-    public void onRSignUpButtonClick(ActionEvent actionEvent) {
+    public void onRSignUpButtonClick(ActionEvent actionEvent) throws IOException {
         String user = tfRUsername.getText();
         String pass = pfRPassword.getText();
         String cPass = pfRConfirm.getText();
@@ -81,36 +61,54 @@ public class LogInRegisterController {
         Alert alert = new Alert(Alert.AlertType.NONE);
         if (cPass.equals(pass)){
             ManageDatabase dbManager = ManageDatabase.getInstance();
-            int createUserRes = dbManager.createUser(user, pass);
+            Status createUserRes = dbManager.createUser(user, pass);
 
-            if (createUserRes == 1){
-                alert.setAlertType(Alert.AlertType.INFORMATION);
-                alert.setContentText("Account creation successful!");
-                alert.setHeaderText(null);
-                alert.showAndWait();
+            if (createUserRes == Status.REGISTRATION_SUCCESS){
+                goToLogIn(actionEvent);
             } else {
-                alert.setAlertType(Alert.AlertType.WARNING);
-                alert.setContentText("Account creation failed.");
-                alert.setHeaderText(null);
-                alert.showAndWait();
+                showAlert(Alert.AlertType.WARNING, "Account creation failed.");
             }
         } else {
-            alert.setAlertType(Alert.AlertType.WARNING);
-            alert.setContentText("Passwords do not match.");
-            alert.setHeaderText(null);
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING, "Passwords do not match.");
         }
 
         pfRPassword.setText("");
         pfRConfirm.setText("");
     }
+    void showAlert(Alert.AlertType alertType, String content){
+        alert.setAlertType(alertType);
+        alert.setContentText(content);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
 
     void goToHomePage(ActionEvent event) throws IOException, SQLException {
-        Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent root = fxmlLoader.load(getClass().getResource("home-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 700, 500);
         stage.setScene(scene);
+        NotesHomeController controller = fxmlLoader.getController();
+        controller.initialize();
         stage.show();
-        stage.setTitle("Notes Site");
+        stage.setTitle("Notes for u :)");
+    }
+
+    void goToLogIn(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 700, 500);
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Log-in Page");
+    }
+
+    void goToRegister(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("register-view.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root, 700, 500);
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Registration Page");
     }
 }
