@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="pnMain" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.LogInRegisterController">
    <children>
-      <GridPane fx:id="pnLogin" alignment="CENTER" hgap="22.0" prefHeight="220.0" prefWidth="287.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-          <padding>
-              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-          </padding>
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" />
-            <ColumnConstraints />
-            <ColumnConstraints halignment="CENTER" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints valignment="CENTER" />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-         <children>
-            <Label text="Username:" GridPane.rowIndex="1">
-               <font>
-                  <Font size="19.0" />
-               </font></Label>
-            <Label fx:id="lbPassword" text="Password:" GridPane.rowIndex="2">
-               <font>
-                  <Font size="19.0" />
-               </font></Label>
-            <Button fx:id="btnLLogIn" mnemonicParsing="false" onAction="#onLLoginButtonClick" text="Log In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-               <font>
-                  <Font size="19.0" />
-               </font></Button>
-            <Button fx:id="btnLSignUp" mnemonicParsing="false" onAction="#onLSignUpButtonClick" text="Sign Up" GridPane.rowIndex="6">
-               <font>
-                  <Font size="19.0" />
-               </font></Button>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME" textAlignment="CENTER" wrappingWidth="244.06835174560547" GridPane.columnSpan="3">
-               <font>
-                  <Font size="19.0" />
-               </font></Text>
-            <TextField fx:id="tfLUsername" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="19.0" />
-               </font></TextField>
-            <Label fx:id="lblLogInError" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="331.0" text="Username or password is incorrect." textAlignment="CENTER" textFill="#c13c3c" visible="false" GridPane.columnSpan="3" GridPane.rowIndex="3">
-               <font>
-                  <Font size="19.0" />
-               </font></Label>
-            <PasswordField fx:id="pfLPassword" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
-               <font>
-                  <Font size="19.0" />
-               </font></PasswordField>
-         </children>
-      </GridPane>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME" textAlignment="CENTER" wrappingWidth="705.0683212280273">
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="40.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="706.0" spacing="30.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label text="Username:">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfLUsername">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="38.0" prefWidth="706.0" spacing="30.0">
+                     <children>
+                        <Label fx:id="lbPassword" text="Password:">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="pfLPassword">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                     <children>
+                        <Button fx:id="btnLSignUp" mnemonicParsing="false" onAction="#onLSignUpButtonClick" text="Sign Up">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnLLogIn" mnemonicParsing="false" onAction="#onLLoginButtonClick" text="Log In">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

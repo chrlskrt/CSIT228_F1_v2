@@ -81,6 +81,7 @@ public class LogInRegisterController {
             showAlert(Alert.AlertType.WARNING, "Passwords do not match.");
         }
 
+        tfRUsername.setText("");
         pfRPassword.setText("");
         pfRConfirm.setText("");
     }
