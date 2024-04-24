@@ -50,7 +50,7 @@ public class NotesHomeController {
 
             try {
                 TextField title = (TextField) note_component.lookup("#noteTitle");
-                TextArea content = (TextArea) note_component.lookup("#noteContent");
+                TextField content = (TextField) note_component.lookup("#noteContent");
                 Button delete_btn = (Button) note_component.lookup("#btnDeleteNote");
                 Button edit_btn = (Button) note_component.lookup("#btnEditNote");
                 Button cancelEdit_btn = (Button) note_component.lookup("#btnCancelEdit");
