@@ -99,7 +99,7 @@ public class NotesHomeController {
                     }
                 });
             } catch (Exception e){
-
+                e.printStackTrace();
             }
 
             home_vbox.getChildren().add(note_component);
