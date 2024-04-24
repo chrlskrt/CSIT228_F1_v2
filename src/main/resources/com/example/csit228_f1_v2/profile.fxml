@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.ProfileSettingsController">
+   <children>
+      <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ToolBar nodeOrientation="LEFT_TO_RIGHT" orientation="VERTICAL" prefHeight="500.0" prefWidth="125.0">
+               <items>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="118.0" prefWidth="46.0" />
+                  <Button  mnemonicParsing="false" onAction="#onBtnNotePadClick" prefHeight="46.0" prefWidth="105.0" text="[ 🗒 ]">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnNewNoteClick" prefHeight="50.0" prefWidth="105.0" text="[ ✎₊ ]">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="105.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="133.0" prefWidth="8.0" />
+                  <Button  contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLogOutButtonClick" prefHeight="50.0" prefWidth="105.0" text="Log Out">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </items>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </ToolBar>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <top>
+                  <Label text="PROFILE" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="40.0" />
+                     </font>
+                  </Label>
+               </top>
+               <center>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@profile.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblProfileUsername" alignment="CENTER" prefHeight="35.0" prefWidth="298.0" text="Label">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
+                        <Label prefHeight="27.0" prefWidth="304.0" text="Change Password:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="pfChangePass" alignment="CENTER" prefHeight="36.0" prefWidth="269.0" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </PasswordField>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                           <children>
+                              <Button fx:id="btnDeleteAcc" alignment="CENTER" mnemonicParsing="false" onAction="#onBtnDelAccClick" text="Delete Account">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnUpdateAcc" mnemonicParsing="false" onAction="#onBtnUpdateClick" text="Update Account">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </children>
+      </HBox>
+      <Separator layoutX="-162.0" layoutY="54.0" opacity="0.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
