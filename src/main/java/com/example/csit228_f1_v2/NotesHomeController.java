@@ -56,7 +56,7 @@ public class NotesHomeController {
                 Button cancelEdit_btn = (Button) note_component.lookup("#btnCancelEdit");
                 Button updateEdit_btn = (Button) note_component.lookup("#btnUpdateNote");
 
-                System.out.println("NN " + note.note_id + " " + note.note_title + " " + note.note_content);
+//                System.out.println("NN " + note.note_id + " " + note.note_title + " " + note.note_content);
 
                 title.setText(note.note_title);
                 content.setText(note.note_content);
