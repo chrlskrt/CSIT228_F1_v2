@@ -4,7 +4,7 @@ import com.example.csit228_f1_v2.SqlSide.ManageDatabase;
 import com.example.csit228_f1_v2.SqlSide.MySQLConnection;
 import com.example.csit228_f1_v2.SqlSide.Status;
 import com.example.csit228_f1_v2.Utils.CurrentUser;
-import com.example.csit228_f1_v2.Utils.NavigateNotes;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
